@@ -1,4 +1,4 @@
-describe('test spec', () => {
+describe('first test spec', () => {
   it('passes', () => {
     cy.visit('https://google.com')
   })
