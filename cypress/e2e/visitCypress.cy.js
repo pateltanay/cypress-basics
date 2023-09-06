@@ -1,5 +1,5 @@
 describe('first test spec', () => {
   it('passes', () => {
-    cy.visit('https://google.com')
+    cy.visit(Cypress.env('baseAppUrl'))
   })
 })
