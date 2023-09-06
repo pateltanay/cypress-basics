@@ -4,7 +4,7 @@
   "description": "Test Cypress Repo for github actions",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "npx run cypress"
+    "test": "npx cypress run --spec 'cypress-basics/cypress/e2e/visitCypress.cy.js'"
   },
   "repository": {
     "type": "git",
