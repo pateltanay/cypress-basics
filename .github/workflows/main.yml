@@ -2,20 +2,7 @@ name: Cypress Tests
 
 on: 
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        required: false
-        type: boolean
+    inputs:  
       environment:
         description: 'Environment to run tests against'
         type: environment
@@ -23,15 +10,12 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - run: |
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
-          echo "Environment: $ENVIRONMENT"
-        env:
-          LEVEL: ${{ inputs.logLevel }}
-          TAGS: ${{ inputs.tags }}
-          ENVIRONMENT: ${{ inputs.environment }}
+          echo "Environment: $environment"
       - name: Checkout
         uses: actions/checkout@v3
       - name: Write the cypress.env.json file
