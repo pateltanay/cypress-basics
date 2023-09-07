@@ -38,7 +38,7 @@ jobs:
         # use quotes around the secret, as its value
         # is simply inserted as a string into the command
         run: |
-          echo '${{ secrets.CYPRESS_ENV }}' > cypress.env.json
+          echo '${{ secrets.LIONS_QE_VALUES }}' > cypress.env.json
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
