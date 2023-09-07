@@ -17,10 +17,6 @@ jobs:
     steps:
       - run: |
           echo "Environment: $environment"
-      - name: Print specs 🖨️
-        env:
-          SPECS: ${{ toJson(github.event.inputs.specs) }}
-        run: echo "$SPECS"
       - name: Checkout
         uses: actions/checkout@v3
       - name: Write the cypress.env.json file
