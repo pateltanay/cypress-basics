@@ -29,9 +29,8 @@ jobs:
         id: get_ip_address
         shell: pwsh
         run: |
-          echo === Getting IP ===
-          $ip_address=(curl -s https://ip4.me/api/ | cut -d ',' -f 2)
-          echo "IP_ADDRESS=$ip_address" >> "$GITHUB_OUTPUT"
+          IP=$(curl -s https://ip4.me/api/ | cut -d ',' -f 2)
+          echo "IP_ADDRESS=$IP" >> $GITHUB_OUTPUT
 
       - name: ips
         id: ips
