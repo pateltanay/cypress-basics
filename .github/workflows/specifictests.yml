@@ -29,7 +29,8 @@ jobs:
         id: get_ip_address
         shell: pwsh
         run: |
-          "ip_address=" + (curl -s https://ip4.me/api/ | cut -d ',' -f 2) >> "$GITHUB_OUTPUT"
+          ip_address=(curl -s https://ip4.me/api/ | cut -d ',' -f 2)
+          echo "IP_ADDRESS=$ip_address" >> $GITHUB_OUTPUT
 
       - name: ips
         id: ips
@@ -38,7 +39,7 @@ jobs:
           HTTPS_PROXY: ${{ inputs.environment != 'production' && 'localhost:8888' || '' }}
           IP_ADDRESS:  ${{ steps.get_ip_address.outputs.ip_address }}
         run: |
-          echo "name=ips_run" + ${{ steps.get_ip_address.outputs.ip_address }}
+          echo "name=ips_run" + ${{ steps.get_ip_address.outputs.IP_ADDRESS }}
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
