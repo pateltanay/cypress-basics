@@ -29,7 +29,7 @@ jobs:
         id: get_ip_address
         shell: pwsh
         run: |
-          echo "ip_address=" + (curl -s https://ip4.me/api/ | cut -d ',' -f 2) >> "$GITHUB_OUTPUT"
+          echo (curl -s https://ip4.me/api/ | cut -d ',' -f 2)
 
       - name: ips
         id: ips
