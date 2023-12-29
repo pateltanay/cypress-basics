@@ -31,7 +31,7 @@ jobs:
         run: |
           echo === Getting IP ===
           $ip_address=(curl -s https://ip4.me/api/ | cut -d ',' -f 2)
-          echo "IP_ADDRESS=$ip_address" >> $GITHUB_OUTPUT
+          echo "IP_ADDRESS=$ip_address" >> "$GITHUB_OUTPUT"
 
       - name: ips
         id: ips
