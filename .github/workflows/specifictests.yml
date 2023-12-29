@@ -38,7 +38,7 @@ jobs:
           HTTPS_PROXY: ${{ inputs.environment != 'production' && 'localhost:8888' || '' }}
           IP_ADDRESS:  ${{ steps.get_ip_address.outputs.ip_address }}
         run: |
-          echo "name=ips_run" + $env:IP_ADDRESS
+          echo "name=ips_run" + ${{ steps.get_ip_address.outputs.ip_address }}
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
