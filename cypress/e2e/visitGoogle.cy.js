@@ -1,5 +1,5 @@
 describe('second test spec', () => {
     it('passes', () => {
-      cy.visit('google.com')
+      cy.visit("https://google.com")
     })
   })

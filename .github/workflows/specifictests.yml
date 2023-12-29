@@ -24,6 +24,22 @@ jobs:
         # is simply inserted as a string into the command
         run: |
           echo '${{ secrets.STAGING_VALUES }}' > cypress.env.json
+
+      - name: Get IP Address
+        id: get_ip_address
+        shell: pwsh
+        run: |
+          echo "ip_address=" + (curl -s https://ip4.me/api/ | cut -d ',' -f 2) >> "$GITHUB_OUTPUT"
+
+      - name: ips
+        id: ips
+        shell: pwsh
+        env: 
+          HTTPS_PROXY: ${{ inputs.environment != 'production' && 'localhost:8888' || '' }}
+          IP_ADDRESS:  ${{ steps.get_ip_address.outputs.ip_address }}
+        run: |
+          echo "name=ips_run" + (kubectl ["'$env:IP_ADDRESS'/32"])
+
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
